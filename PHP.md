@@ -2,5 +2,4 @@ php第一节
 
 hello world！
 
-new test
-
+难道不是一个行动的
