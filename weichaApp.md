@@ -226,3 +226,61 @@ obj:{name:"王进",age:18,sex"男"}
 输出即为“数据传递展示 数据绑定”
 ```
 
+## WXML_if条件
+
+```html
+<view wx:if="{{day==1}}">周一</view>
+<view wx:if="{{day==2}}">周二</view>
+<view wx:if="{{day==3}}">周三</view>
+<view wx:if="{{day==4}}">周四</view>
+<view wx:if="{{day==5}}">周五</view>
+<view wx:if="{{day==6}}">周六</view>
+<view wx:if="{{day==7}}">周日</view>
+//普通的if-else
+
+<block wx:if="{{flase}}">
+    <navigator url="xxxx">
+        跳转1
+    </navigator>
+</block>
+//整个块都消失
+<block wx:else>
+    <navigator url="xxxx">
+        跳转2
+    </navigator>
+</block>
+```
+
+
+
+## WXML_for循环
+
+```html
+data:{
+listArl:["平面设计","室内设计","UI设计","影视后期","web前端"]，
+listObj:[
+{title:"形式",time:"2020-01-02"},
+{title:"形式",time:"2020-01-02"}，
+{title:"形式",time:"2020-01-02"}，
+{title:"形式",time:"2020-01-02"}
+]
+},
+
+<view wx:for="{{listArr}}">{{index}} ,{{item}}</view>
+//index表示索引值
+//item 数组的每一项
+
+<view wx:for="{{listArr}}"  wx:for-index="i" wx:for-item="content">
+{{i}} .{{content}}
+</view>
+//for-index  自定义名字替换下键
+//for-item   自定义数组的键值
+
+<view wx:for={{listObj}}>
+    <text>{{item.title}}</text>-
+    <text>{{item.time}}</text>
+</view>
+
+  
+```
+
