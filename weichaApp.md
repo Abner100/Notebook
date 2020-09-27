@@ -284,3 +284,20 @@ listObj:[
   
 ```
 
+## 框架接口
+
+### page
+
+onLoad 监听页面加载(一次)
+
+onReady 监听页面初次渲染完成(一次)
+
+onShow 监听页面显示(离开页面从其他页面进入)（多次）
+
+onHide 监听页面隐藏（多次）
+
+onPullDownRefresh 监听页面下拉刷新（多次）
+
+onReadchBottom 下拉触底更新(多次)
+
+onShareAppMessage 用户右上角分享
