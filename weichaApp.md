@@ -301,3 +301,108 @@ onPullDownRefresh 监听页面下拉刷新（多次）
 onReadchBottom 下拉触底更新(多次)
 
 onShareAppMessage 用户右上角分享
+
+## 事件函数setData
+
+所有的事件都需要添加bind，如bindtap，bindtouchmove
+
+touchstart 
+
+touchmove
+
+touchcancel
+
+touchend
+
+tap
+
+```html
+<view bindtap="myTap">测试</view>
+
+
+myTap:function(res){
+console.log(res);
+}
+```
+
+在函数中修改data数据的方法
+
+```html
+<view bindtap="myTap" data-name="测试"></view>
+//data-name用于修改闯入的类中的数据
+
+myTap:function(res){
+var name = res.currentTarget.dataset.name
+this.setData({
+name:name，
+})
+}
+```
+
+## API基本使用
+
+getSystemInfoSunc()    //返回设备信息
+
+```html
+onLoad:function(options){
+console.log(wx.getSystemInfoSync()
+}
+```
+
+showLoading与hideLoading  //加载与加载结束
+
+shwoToast   //展示文本内容
+
+```html
+wx.showToadst({
+title:"提交成功",
+})
+```
+
+## API路由用法
+
+  路由控制跳转
+
+```html
+clickBtn:funcyion(){
+	wx.navigaTo({
+		url:"pages/demo2/demo2"
+		success:res=>{
+		console.log(res)
+		//返回函数
+}
+	}),     
+}  //定义跳转函数，不能跳转tarbab页面
+
+wx.switchTab()  //可以跳转到tarbab
+wx.relaunch()  //可以带参数的跳转
+
+
+<view bindtap="navBack">返回</view>
+navBack:function(){
+wx.navigateBack()
+},
+//返回上一页
+```
+
+  
+
+## API模拟数据请求
+
+ 测试时设置为不校验合法域名 
+
+```html
+onLoad:function(options){
+wx.request({
+	url:"xxxxx",   //服务器的url
+	data:{},       //传递给服务器的数
+success:res=>{     //回调函数
+console.log(res)
+this.setData({
+resData:res.data   //设置data中的数据
+})
+}
+})
+}
+```
+
