@@ -406,3 +406,30 @@ resData:res.data   //设置data中的数据
 }
 ```
 
+## 自定义组件
+
+自定义组件的创建方法：
+1.在根目录下创建components文件夹。（第一次的时候创建，以后就不需要再创建了）
+
+2.在components下面创新组件名，如xsj，继续在xsj文件夹下单击右键，新建component。
+
+3.在创建好的组件的wxml中写出你想显示的内容即可，在wXSS中编辑样式
+
+4.比如首页想要调用xsj组件，那么就需要在index.json中进行配置。
+
+5.在index.json中的调用方法，属性名是组件名，值就是组件的路径
+
+```json
+{"usingComponents": {
+    "xjs":"components/xsj/xsj"
+}}
+```
+
+6.在index.html中就可以使用了,如：
+
+```html
+<xsj></xsj>
+或者
+</xsj>
+```
+
