@@ -433,3 +433,24 @@ resData:res.data   //设置data中的数据
 </xsj>
 ```
 
+## 小程序的MVVM架构
+
+视图层----MINA框架----逻辑层
+
+MINA：1.DataBindings 2.DomListering
+
+## 小程序登录流程
+
+### 客户端：
+
+1.调用wx.login获取code
+2.调用wx.request发送code到我们自己的服务器（我们自己的服务器会返回一个登录态的标识，比如token）
+3.将登录态的标识token进行存储，以便下次使用
+4.请求需要登录态标识的接口时，携带token
+
+### 服务器端
+
+服务器端将code+appid+appsecret发给微信服务器端
+
+微信服务器端返回session_key+openid给服务器端  
+
