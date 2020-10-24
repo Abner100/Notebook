@@ -4,15 +4,19 @@
 
 ### InterAdderss类   的使用
 
-String InetAddress getByName(String host)                 //确定主机名称的IP地址                          		String getHostName()                                                      //获取IP地址中的主机名                                                    String getHostAdress()									 //返回文本显示的IP地址字符串
+String InetAddress getByName(String host)                 //确定主机名称的IP地址                          										String getHostName()                                                      //获取IP地址中的主机名                                                    			String getHostAdress()									 //返回文本显示的IP地址字符串
 
  
 
-## 实现多 线程
+## 实现多线程
 
-##### 进程：正在进行的应用程序
+##### 进程
 
-##### 线程：一个进程中的单个顺序控制流。是一个执行路径
+正在进行的应用程序
+
+##### 线程
+
+一个进程中的单个顺序控制流。是一个执行路径
 
 单线程：一个进程中只有一条执行路径
 
@@ -105,3 +109,105 @@ void setDaemon(boolean on)
 4.创建Thread类的对象，把MyRunable对象作为构造方法的参数
 
 5.启动线程
+
+```java
+public static void main(String[] args){
+    MyRunable my =new  MyRunable();
+    
+    Thread t1 = new Thread(my,"高铁");
+    Thread t2 = new Thread(my,"飞机");
+    
+    t1.start();
+    t2.start();
+}
+```
+
+Runable接口的好处：
+
+1.避免了java单继承的局限性
+
+2.适合多个相同程序的代码去处理同一个资源的情况，把线程和程序的代码、数据有效的分离，较好的体现了面向对象的设计思想
+
+##### 线程同步
+
+###### 卖票
+
+共有100张票，三个窗口同步卖票
+
+```java
+SellTicket.java
+
+public class SellTickets implements Runnable {
+    private int tickets = 100;
+
+    @Override
+    public void run() {
+        while (true) {
+            if (tickets > 0) {
+                System.out.println(Thread.currentThread().getName() + "正在出售" + tickets + "张票");
+                tickets--;
+            }
+        }
+    }
+}
+
+```
+
+```java
+SellTicketsDemo.java
+
+public class SellTicketsDemo {
+    public static void main(String[] args) {
+        SellTickets st = new SellTickets();
+        Thread t1 = new Thread(st, "窗口1");
+        Thread t2 = new Thread(st, "窗口2");
+        Thread t3 = new Thread(st, "窗口3");
+
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+}
+
+```
+
+###### 同步代码块
+
+格式
+
+```java
+synchronized(任意对象){
+	多条语句操作共享数据的代码
+}
+```
+
+用法
+
+修改上方的线程代码例子
+
+```java
+public class SellTickets implements Runnable {
+    private int tickets = 100;
+    private Object object = new Object();
+
+    @Override
+    public void run() {
+        while (true) {
+            synchronized (object) {
+                if (tickets > 0) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(Thread.currentThread().getName() + "正在出售" + tickets + "张票");
+                    tickets--;
+                }
+            }
+        }
+    }
+}
+
+```
+
+###### 同步方法
