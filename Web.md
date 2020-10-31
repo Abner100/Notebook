@@ -760,3 +760,179 @@ h1 {font-family: Georgia, serif;}
 ### 2.字体大小
 
 CSS使用font-size属性定义字体大小。
+
+```css
+p{
+    font-size: 10px;
+}
+```
+
+px（像素）大小是我们网页的最常用的单位
+
+谷歌浏览器默认的文字大小为16px
+
+不同浏览器可能默认显示的字号大小不一致，我们尽量给一个明确值大小，不要默认大小
+
+可以给body指定整个页面文字的大小
+
+### 3.字体风格
+
+font-style 属性最常用于规定斜体文本
+
+该属性有三个值：
+
+- normal - 文本正常显示
+- italic - 文本斜体显示
+- oblique - 文本倾斜显示
+
+```css
+p.normal {font-style:normal;}
+p.italic {font-style:italic;}
+p.oblique {font-style:oblique;}
+```
+
+font-weight 属性设置文本的粗细。
+
+使用 bold 关键字可以将文本设置为粗体。
+
+关键字 100 ~ 900 为字体指定了 9 级加粗度。如果一个字体内置了这些加粗级别，那么这些数字就直接映射到预定义的级别，100 对应最细的字体变形，900 对应最粗的字体变形。数字 400 等价于 normal，而 700 等价于 bold。
+
+```css
+p.normal {font-weight:normal;}
+p.thick {font-weight:bold;}
+p.thicker {font-weight:900;}
+```
+
+#### 4.字体复合属性
+
+将字体的所有属性一行写完
+
+```css
+body{
+font:font-style font-weight font-size/line-height font-family;
+}
+```
+
+使用font 属性时，必须按上面语法格式中的顺序书写，不能更换顺序，并且各个属性间以空格隔开
+
+font-size 和 font-family 不可以省略
+
+## css文本属性
+
+### 1.文本颜色 
+
+color属性用于定义文本的颜色
+
+```css
+div{
+    color :red;
+    color #ff0000:
+}
+```
+
+### 2.对齐文本
+
+text-align属性用于设置元素内文本内容的水平对齐方式
+
+```css
+div{
+    text-align:center;
+}
+```
+
+left :左对齐
+
+right:右对齐
+
+center:居中对齐
+
+### 3.装饰文本
+
+text-decoration属性规定添加到文本的修饰。可以给文本添加下划线、删除线、上划线等。
+
+```css
+div{
+    text-decoration :underline;
+}
+```
+
+none:默认 没有装饰
+
+underline: 下划线
+
+overline: 上划线
+
+line-through:删除线 
+
+### 4.文本缩进
+
+text-indent属性用力啊指定文本的第一行的缩进，通常是将段落的首行进行缩进
+
+```css
+div{
+    text-indent: 10px；
+}
+```
+
+em是一个相对单位，就是当前元素（font-size）1个文字的大小如果当前元素没有设置大小，则会按照父元素的1个文字大小。
+
+```css
+p{
+    text-indent: 2em;
+}
+```
+
+### 5.行间距
+
+line-height属性用于设置行间的距离（行高）。回以控制这字行与行之面的距离
+
+```css
+p{
+    ling-height: 10px ;
+}
+```
+
+## css的引入方式
+
+### 1.内部样式表
+
+内部样式表（内嵌样式表）是写到html页面内部.是将所有的CSS代码抽取出来，单独放到一个<style>标签中。
+
+```css
+<style>
+div{
+    color :red;
+    font-size:12px;
+}
+</style>
+```
+
+<style  标签理论上可以放在HTML文档的任何地方，但一般会放在文档的<head 标签中
+
+通过此种方式，可以方便控制当前整个页面中的元素样式设置
+
+代码结构清晰，但是并没有实现结构与样式完全分离
+
+使用内部样式表设定CSS，通常也被称为==嵌入式==引入，这种方式是我们练习时常用的方式
+
+#### 2.行内样式表
+
+行内样式表（内联样式表）是在元素标签内部的style属性中设定CSS样式。适合于修改简单样式
+
+```css
+<p style="color : red" ></p>
+```
+
+### 3.外部样式表
+
+实际开发都是外部样式表.适合于样式比较多的情况.核心是样式单独写到CSS文件中，之后把CSS文件引入到HTML页面中使用。
+
+步骤：
+
+1.新建一个后缀名为.css的样式文件，把所有CSS代码都放入此文件中。
+2.在HTML页面中，使用<link>标签引入这个文件。
+
+```css
+<link rel="stylesheet href="xxx.css" >
+```
+
