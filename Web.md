@@ -618,3 +618,145 @@ type属性：type属性可以让input表单元素设置不同的形态。
 ```
 
 核心：<label>标签的for 属性应当与相关元素的id属性相同。
+
+# css
+
+## css的选择器
+
+### 1.css派生选择器
+
+```css
+li strong {
+    font-style: italic;
+    font-weight: normal;
+  }
+
+<p><strong>我是粗体字，不是斜体字，因为我不在列表当中，所以这个规则对我不起作用</strong></p>
+
+<ol>
+<li><strong>我是斜体字。这是因为 strong 元素位于 li 元素内。</strong></li>
+<li>我是正常的字体。</li>
+</ol>
+```
+
+### 2.id选择器
+
+id 选择器可以为标有特定 id 的 HTML 元素指定特定的样式。
+
+id 选择器以 "#" 来定义。
+
+```css
+#red {color:red;}
+#green {color:green;}
+```
+
+```html
+<p id="red">这个段落是红色。</p>
+<p id="green">这个段落是绿色。</p>
+```
+
+id选择器和派生选择器
+
+```css
+#sidebar p {
+	font-style: italic;
+	text-align: right;
+	margin-top: 0.5em;
+	}
+
+#sidebar h2 {
+	font-size: 1em;
+	font-weight: normal;
+	font-style: italic;
+	margin: 0;
+	line-height: 1.5;
+	text-align: right;
+	}
+```
+
+### 3.类选择器
+
+在 CSS 中，类选择器以一个点号显示
+
+```css
+.center {text-align: center}
+```
+
+```html
+<h1 class="center">
+This heading will be center-aligned
+</h1>
+
+<p class="center">
+This paragraph will also be center-aligned.
+</p>
+```
+
+也可以用于派生选择器，不再赘叙
+
+多类名使用
+
+```html
+<div class="red font20">亚瑟</div>
+```
+
+（1）在标签class属性中写多个类名
+
+（2）多个类名中间必须用空格分开
+
+（3）这个标签就可以分别具有这些类名的样式
+
+#### 4.属性选择
+
+对带有指定属性的 HTML 元素设置样式。
+可以为拥有指定属性的 HTML 元素设置样式，而不仅限于 class 和 id 属性。
+
+下面的例子为带有 title 属性的所有元素设置样式：
+
+```css
+[title]
+{
+color:red;
+}
+```
+
+下面的例子为 title="W3School" 的所有元素设置样式：
+
+```css
+[title=W3School]
+{
+border:5px solid blue;
+}
+```
+
+## css字体属性
+
+### 1.字体系列
+
+#### 1.通用字体系列
+
+如果你希望文档使用一种 sans-serif 字体，但是你并不关心是哪一种字体，以下就是一个合适的声明：
+
+```css
+body {font-family: sans-serif;}
+```
+
+除了使用通用的字体系列，您还可以通过 font-family 属性设置更具体的字体。
+
+```css
+h1 {font-family: Georgia;}
+```
+
+#### 2.非通用字体系列 
+
+如果用户代理上没有安装 Georgia 字体，就只能使用用户代理的默认字体来显示 h1 元素。
+
+我们可以通过结合特定字体名和通用字体系列来解决这个问题：
+
+```css
+h1 {font-family: Georgia, serif;}
+```
+
+### 2.字体大小
+
+CSS使用font-size属性定义字体大小。
