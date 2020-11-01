@@ -936,3 +936,80 @@ div{
 <link rel="stylesheet href="xxx.css" >
 ```
 
+![快捷](快捷.PNG)
+
+## css的符合选择器
+
+### 1.后代选择器 
+
+```css
+ol li{
+    color: red;
+}
+```
+
+### 2.子元素选择器(只选择儿子)
+
+```css
+.nav>li{
+    color:red;
+}
+```
+
+### 3.并集选择器
+
+```css
+div ,
+p,
+li{
+    color :pink;
+}
+```
+
+### 4.链接伪类选择器
+
+ ```css
+a:link   //选择所有未访问的链接
+a:visited  //选择所有已访问的链接
+a:hover	 //选择鼠标指针位于其上的链接
+a:active  //选择活动链接
+ ```
+
+```css
+a:link{
+    color :red;
+}
+a:visited{
+    color:black;
+}
+a:hover{
+    color:skyblue;
+}
+a:active{
+    color:green;
+}
+```
+
+注意事项：顺序必须按照 link visited hover active  ==LVHA==
+
+### 5.focus伪类选择器
+
+:focus伪类选择器用于选取获得焦点的表单元素
+
+焦点就是光标，一般情况<input>类表单元素才能获取，因此这个选择器也主要针对表单元素来说
+
+```css
+input:focus{
+    background-color:yellow
+}
+```
+
+鼠标点哪，哪里就是获得光标
+
+## css的元素显示模式
+
+### 1.什么是元素的显示模式
+
+作用：网页标签较多，在不同的地方会用到不同类型的标签，了解他们的特点可以更好的布局我们的网页 
+
+HTML分为块元素和行内元素两种类型
