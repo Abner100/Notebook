@@ -1401,3 +1401,49 @@ radius半径（圆的半径）原理：（椭）圆与边框的交集形成圆�
 该属性是一个简写属性，可以跟四个值，分别代表左上角、右上角、右下角、左下角
 
 分开写：border-top-left-radius、border-top-right-radius、border-bottom-right-radius和border-bottom-left adius
+
+### 6.盒子阴影
+
+CSS3中新增了盒子阴影，我们可以使用box-shadow属性为盒子添加阴影。
+
+语法：
+
+```css
+box-shadow:h-shadow v-shadow blur spread color inset；
+```
+
+h-shadow 必需。水平阴影的位置。允许负值。
+
+v-shadow 必需。垂直阴影的位置。允许负值。
+
+blur 可选。模糊距离。
+
+spread 可选。阴影的尺寸。
+
+color 可选。阴影的颜色。请参阅CSS颜色值。
+
+inset 可选。将外部阴影（outset）改为内部阴影。
+
+好看的影子
+
+```css
+box-shadow：10px 10px 10px-4px rgba（0，0，0，.3）；
+```
+
+### 7.文本阴影
+
+在CSS3中，我们可以使用text-shadow属性将阴影应用于文本。
+
+语法：
+
+```css
+text-shadow:h-shadow v-shadow blur color；
+```
+
+
+
+值描述
+h-shadow 必需。水平阴影的位置。允许负值。
+v-shadow 必需。垂直阴影的位置。允许负值。
+blur 可选。模糊的距离。
+color 可选。阴影的颜色。参阅CSS额色值。
