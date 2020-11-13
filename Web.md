@@ -933,7 +933,7 @@ div{
 2.在HTML页面中，使用<link>标签引入这个文件。
 
 ```css
-<link rel="stylesheet href="xxx.css" >
+<link rel="stylesheet" href="text.css" />
 ```
 
 ![快捷](快捷.PNG)
