@@ -373,3 +373,271 @@ Method getDeclaredMethod（string name，类<？>...parameterTypes）
 string getName（）
 ```
 
+### JaveScript
+
+#### 1.概念
+
+一门客户端脚本语言,运行在客户端浏览器中的。每一个浏览器都有Javascript的解析引擎
+脚本语言：不需要编译，直接就可以被浏览器解析执行了
+
+#### 2.功能：
+
+可以来增强用户和html页面的交互过程，可以来控制html元素，让页面有一些动态的效果，增强用户的体验。
+
+#### 3.发展史
+
+1.1992年，Nombase公司，开发出第一门客户端脚本语言，专门用于表单的校验。命名为：C--，后来更名为：scriptEase
+
+2.1995年，Netscape（网景）公司，开发了一门客户端脚本语言：Livescript。后来，请来SUN公司的专家，修改Livescript，命名为Javascript
+
+3.1996年，微软抄袭Javascript开发出Jscript语言
+
+4.1997年，ECMA（欧洲计算机制造商协会），ECMAScript，就是所有客户端脚本语言的标准。
+
+#### 4.ECMAScript
+
+##### 1.与html的结合
+
+###### 1.内部JS
+
+```html
+<script>
+    alert("")
+</script>
+```
+
+###### 2.外部JS
+
+```html
+<script src="js/xx.js"></script>
+```
+
+###### 3.注意
+
+1.<script>可以定义在html页面的任何地方。但是定义的位置会影响执行顺序。
+2.<script>可以定义多个。
+
+##### 5.注释
+
+```html
+//注释
+/*注释*/
+```
+
+
+
+##### 6.数据类型
+
+###### 1.原始数据类型
+
+1.number：数字。整数/小数/NaN（not a number一个不是数字的数字类型）
+
+2.string：字符串。字符串“abc""a"'abc'
+
+3.boolean:true和false
+
+4.null：一个对象为空的占位符
+
+5.undefined：未定义。如果一个变量没有给初始化值，则会被默认赋值为undefined
+
+###### 2.引用
+
+对象
+
+##### 7.变量
+
+变量：一块储存数据的内存空间
+
+语法：var 变量名 = 初始化值
+
+```js
+//定义number类型
+var num =1;
+var num2 =1.2;
+var num3=NaN;
+//定义string类型
+var str="abc";
+var str2="edf";
+//定义boolean类型
+var flag= true;
+//定义null，underfined类型
+var obj= null;
+var obj2=underfined;
+var obj3;
+```
+
+
+
+##### 8.运算符
+
+###### 1.一元运算符：只有一个运算数的运算符
+
+++，--，+（正号）
+
+###### 2.算数运算符
+
++-*/%...
+
+###### 3.赋值运算符
+
+= += -+....
+
+###### 4.比较运算符
+
+< > >= <= == ===
+
+###### 5.逻辑运算符
+
+&& || !
+
+###### 6.三元运算符
+
+？ ：
+
+##### 9.流程控制语句  
+
+if else
+
+switch
+
+while
+
+do...while
+
+for
+
+##### 10.对象
+
+```js
+function 方法名称(参数){
+    
+}
+
+var arr3 = new Array(5);
+var arr1 = [1,2,3,4];
+```
+
+计算随机数（1-100）
+
+```js
+var num=Math.floor((math.random()*100)+1)
+```
+
+##### 11.正则表达式
+
+###### 1.单个字符：[]
+
+如：[a] [ab] [a-zA-Z0-9]
+
+特殊符号代表特殊含义的单个字符：
+
+\d:单个数字字符[0-9]
+
+\w:单个单词字符[a-zA-Z0-9_]
+
+###### 2.量词符号：
+
+？：表示出现0次或1次
+
+*：表示出现0次或多次
+
++：表示出现1次或多次
+
+{m,n}:表示m<=数量 <=n
+
+m如果缺省：{,n}最多n次
+
+n如果缺省：{m,}最少m次
+
+```js
+var reg =new RegExp("正则表达式");
+var reg =/正则表达式/
+
+reg.test(xxxxx)
+```
+
+#### DOM简单学习
+
+### Bootstrap框架
+
+#### 1.概念
+
+一个前端开发的框架，Bootstrap，来自Twitter，是目前很受欢迎的前端框架。Bootstrap是基于HTML、CSS、JavaScript的，它简洁灵活，使得Web 开发更加快捷。
+
+ *框架：一个半成品软件，开发人员可以在框架基础上，在进行开发，简化编码
+
+*好处：1.响应式布局 2.便捷的样式
+
+#### 2.快速入门
+
+1.下载bootstrap
+
+2.引入bootstrap文件 
+
+3.创建页面，引用样式 
+
+基本页面
+
+```html
+<！DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible"content="IE=edge">
+<meta name="viewport"content="width=device-width，initial-scale=1">
+<！--上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！-->
+<title>Bootstrap HelloWorld</title>
+<！--Bootstrap-->
+<link href="css/bootstrap.min.css"rel="stylesheet">
+<！--jQuery（Bootstrap的所有JavaScript插件都依赖jQuery，所以必须放在前边）-->
+<script src="js/jquery-3.2.1.min.js"></script>
+<！--加载 Bootstrap的所有Javascript插件。你也可以根据需要只加载单个插件。->
+<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1>你好，世界！</h1>
+</body></html>
+```
+
+####  3.响应式布局
+
+*同一套页面可以兼容不同分辨率的设备。
+
+*实现：依赖于栅格系统：捋一行平均分成12个格子，可以指定元素占几个格子
+
+*步骤：
+1.定义容器。相当于之前的table、
+*容器分类：
+1.container：两边留白
+2.container-fluid：每一种设备都是100%宽度
+
+2.定义行。相当于之前的tr样式：row
+
+3.定义元素。指定该元素在不同的设备上，所占的格子数目。样式：co1-设备代号-格子数目
+*设备代号：
+1.xs：超小屏幕手机（<768px）：co1-xs-12																																				2.sm：小屏幕平板（2768px）
+3.md：中等屏幕桌面显示器（2992px）
+4.1g：大屏幕大桌面显示器（21200px）
+
+*注意：
+1.一行中如果格子数目超过12，则超出部分自动换行
+
+2.栅格类属性可以向上兼容。栅格类适用于与屏幕宽度大于或等于分界点大小的设备
+
+3.如果真实设备宽度小于了设置栅格类属性的设备代码的最小值，会一个元素沾满一整行。
+
+##### 1.全局css样式
+
+```css
+按钮：class="btn btn-default"
+图片: class="img-responsive":图片再任意尺寸都占100%
+图片形状:
+<img src="..." alt="..." class="img-rounded">
+<img src="..." alt="..." class="img-circle">
+<img src="..." alt="..." class="img-thumbnail">
+表格:talbe
+table-bordered
+table-hover
+表单:class="form-sontrol"
+```
+
