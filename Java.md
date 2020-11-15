@@ -525,7 +525,7 @@ var num=Math.floor((math.random()*100)+1)
 
 ##### 11.正则表达式
 
-###### 1.单个字符：[]
+###### 1.单个字符：
 
 如：[a] [ab] [a-zA-Z0-9]
 
@@ -556,7 +556,390 @@ var reg =/正则表达式/
 reg.test(xxxxx)
 ```
 
-#### DOM简单学习
+#### DOM
+
+功能：控制html文档的内容
+
+获取页面标签（元素）对象：Element
+
+document.getElementById（“id值"）：通过元素的id获取元素对象
+
+操作Element对象：
+
+1.修改属性值：
+1.明确获取的对象是哪一个？
+2.查看API文档，找其中有哪些属性可以设置
+2.修改标签体内容：
+
+属性：innerHTML
+1.获取元素对象
+2.使用innerHTML属性修改标签体内容
+
+##### 1.概念
+
+Document object Model文档对象模型
+
+捋标记语言文档的各个组成部分，封装为对象。可以使用这些对象，对标记语言文档进行CRUD的动态操作
+
+##### 2.W3C DOM标准被分为3个不同的部分
+
+###### 1.核心DoM-针对任何结构化文档的标准模型
+
+*Document：文档对象
+
+1.创建：在html dom模型中可以使用window获取
+
+2.方法
+
+(1)获取Element对象：
+
+1.getElementById（）：根据id属性值获取元素对象。id属性值一般唯一2.getEIementsBy 
+
+```js
+var id=document.getElementsByid（"yoyo"）；
+alert（id）；
+```
+
+2.getElementTagName（）：根据元素名称获取元素对象们。返回值是一个数组
+
+```js
+//2.根据元素名称获取元素对象们。返回值是一个数组
+var divs=document.getElementsByTagName（"div"）；
+alert（divs.length）；
+```
+
+
+
+3.getElementsByClassName（）：根据class属性值获取元素对象们。返回值是一个数组
+
+```js
+//3.根据C1ass属性值获取元素对象们。返回值是一个数组
+var divcls=document.getElementsByClassName（"c1s1"）；
+alert（div_cls.length）；
+```
+
+
+
+4.getElementsByName（）：根据name属性值获取元素对象们。返回值是一个数组组
+
+```js
+//4.根据name属性值获取元素对象们。返回值是一个数组
+var ele_username=document.getElementsByName（"username"）；
+alert（efe_username.1ength）
+```
+
+
+
+(2)创建其他DOM对象
+
+createAttribute（name）
+createComment（）createElement（）
+createTextNode（）
+
+*Element：元素对象
+*Attribute：属性对象
+*Text：文本对象
+*Commeft：注释对象
+
+Element:元素属性
+
+1.获取/创建：通过document来获取和创建
+
+2.方法：
+
+1.removeAttribute():删除属性
+
+2.setAttribute():设置属性
+
+```js
+//获取btn
+var btn_set=document.getElementById("btn_set");
+btn_set.onclick=function(){
+    var element_a=document.getElementsByTagName("a")[0];
+    element_a.setAttribute("href","http://www.baidu.com");
+}
+
+//删除btn
+var btn_remove=document.getElementById("btn_remove");
+btn_set.onclick=function(){
+    var element_a=document.getElementsByTagName("a")[0];
+    element_a.removeAttribute("href","http://www.baidu.com");
+}
+
+```
+
+Node节点对象，其他5个的父节点
+
+特点：所有Dom对象都可以被认为是一个节点
+
+CRUD dom树：
+
+appendchild（）：向节点的子节点列表的结尾添加新的子节点。
+removeChild（）：删除（并返回）当前节点的指定子节点。
+replacechild（）：用新节点替换一个子节点。
+
+```html
+<body>
+    <div id="div1">
+        <div id="div2">
+            div2
+        </div>
+    </div>
+    <a href="javascript:void(0)" id="del">删除子节点</a>
+    <a href="javascript:void(0)" id="sff">添加</a>
+    <script>
+        var element_a= document.getElementById("del");
+        element_a.onclick=function(){
+            var div1 =document.getElementById("div1");
+            var div2=document.getmentById("div2");
+            div1.removeChile(div2);
+        }
+        
+      var element_a= document.getElementById("add");
+        element_a.onclick=function(){
+            var div1 =document.getElementById("div1");
+            var div3 = document.creatAttribute("id","div3");
+            div1.appendChile(div2);
+        }  
+    </script>
+</body>
+```
+
+属性：parentNode  返回节点的父节点
+
+###### 2.XML DOM-针对XML文档的标准模型
+
+###### 3.HTML DOM-针对HTML文档的标准模型
+
+#### BOM
+
+##### 1.概念：Browser Object Model浏览器对象模型
+
+捋浏览器的各个组成部分封装成对象。
+
+##### 2.组成：
+
+###### 1.Window：窗囗对象
+
+1.创建
+
+2.方法
+
+1.与弹出框有关的方法
+
+alert（）显示带有一段消息和一个确认按钮的警告框。
+
+```js
+alert("耗子尾汁");
+window.alert("耗子尾汁");
+```
+
+
+
+confirm（）显示带有一段消息以及确认按钮和取消按钮的对话框。
+*如果用户点击确定按钮，则方法返回true
+*如果用户点击取消按钮，则方法返回false
+
+```js
+var flag=confirm("确定要退出吗");
+if(flag){
+    alert("bye");
+}else{
+    alert("em")
+}
+```
+
+
+
+prompt（）显示可提示用户输入的对话框。
+
+返回值为用户输入的值
+
+```js
+var result=prompt("输入名字")
+```
+
+2.与打开关闭有关的方法
+
+close()关闭当前窗口
+
+```js
+close();
+//关闭指定窗口
+newwindow.close();
+```
+
+open()打开新窗口
+
+返回值为新窗口对象
+
+```js
+var newwindow=open("www.baidu.com")
+```
+
+3.与定时器有关的方法
+
+setTimeout()
+
+在指定的毫米数后调用函数或者计算表达式
+
+参数：1.js代码或者方法  2.毫秒值
+
+返回值：唯一标识，用于取消定时器
+
+```js
+var id=setTimeout("alert("boom~")",2000);
+两秒后执行
+```
+
+clearTimeout()
+
+取消由setTimeout（）方法设置的timeout。
+
+```js
+clearTimeout(id);
+```
+
+setInterval（）
+
+按照指定的周期（以毫秒计）来调用函数或计算表达式。
+
+```js
+var id =setInterval("alert("boom~")",2000);
+每两秒执行一次
+```
+
+参数：1.js代码或者方法  2.毫秒值
+
+返回值：唯一标识，用于取消定时器
+
+clearInterval（）
+
+取消由setInterval（）设置的timeout。
+
+```js
+clearInterval(id);
+```
+
+3.属性    
+
+4.特点
+
+Navigator：浏览器对象
+
+screen：显示器屏幕对象
+
+History：历史记录对象
+
+###### 2.Location：地址栏对象
+
+1.创建
+
+方法：
+
+roload()
+
+刷新页面
+
+```js
+location.reload();
+```
+
+href
+
+设置或获取href
+
+```js
+var hred =location.href;
+//用于跳转
+location.href="www.baidu.com"
+```
+
+#### 4.HTMLDOM
+
+innerHTML
+
+##### 1.标签体的设置和获取：innerHTM
+
+```js
+var div =document.getElementById("div1");
+var innerHTML =div.innerHTML;
+alert(innerHTML);
+```
+
+##### 2.使用html元素对象的属性
+
+##### 3.控制样式
+
+```js
+//使用元素的style属性
+var div1 =document.getElementById("div1");
+div1.onclick=function(){
+    div1.style.border="1px solid red";
+}
+```
+
+```html
+//提前定义好类元素选择器的样式，通过元素的className属性来设置其class
+
+<style>
+    .d2{
+        border:1 px solid blue;
+        width:20px;
+        height:200px;
+    }
+</style>
+var div2 = document.getElementId("div2");
+div2.onclick=function(){
+div2.className="d2";
+}
+```
+
+#### 事件监听机制
+
+##### 1.概念
+
+*事件：某些操作。如：单击，双击，键盘按下了，鼠标移动了
+*事件源：组件。如：按钮文本输入框...
+监听器：代码。
+*注册监听：捋事件，事件源，监听器结合在一起。当事件源上发生了某个事件，则触发执行某个监听器代码。
+
+##### 2.常见的事件
+
+###### 1.点击事件
+
+1.onclick：单击事件
+2.ondblclick：双击事件
+
+###### 2.焦点事件
+
+1.onblur：失去焦点2.onfocus：元素获得焦点。
+3.加载事件：
+1.onload：一张页面或一幅图像完成加载。
+
+###### 4.鼠标事件
+
+1.onmousedown 鼠标按钮被按下。
+2.onmouseup鼠标按键被松开。
+3.onmousemove 鼠标被移动。
+4.onmouseover 鼠标移到某元素之上。
+5.onmouseout鼠标从某元素移开。
+
+###### 5.键盘事件
+
+1.onkeydown某键盘按键被按下。
+2.onkeyup某个键盘按键被松开。
+3.onkeypress某个键盘按键被按下并松开。
+
+###### 6.选择和改变
+
+1.onchange域的内容被改变。
+2.onselect文本被选中。
+
+###### 7.表单事件
+
+1.onsubmit 确认按钮被点击。
+.onreset 重置按钮被点击。
 
 ### Bootstrap框架
 
