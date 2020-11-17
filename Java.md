@@ -373,6 +373,300 @@ Method getDeclaredMethod（string name，类<？>...parameterTypes）
 string getName（）
 ```
 
+### 数据库
+
+#### 1.数据库基本概念
+
+##### 1.什么是数据库
+
+用于存储和管理数据的仓库
+
+##### 2.数据库的特点
+
+1.持久化存储数据的。其实数据库就是一个文件系统
+2.方便存储和管理数据
+3.使用了统一的方式操作数据库--SQL
+
+##### 3.常见的数据库软件
+
+ MYSQL     SQLSERVER
+
+#### 2.什么的SQL
+
+sql是一种操作所有关系型数据库的规则，每种数据库操作方式存在不一样的地方称为方言
+
+#### 3.SQL通用语法
+
+1.SQL语句可以单行或多行书写
+
+2.可以使用空格和缩进来增强语句的可读性。
+
+3.MYSQL的数据库SQL语句不区分大小写，关机字建议大写
+
+4.三种注释
+
+*单行注释：--注释内容或 # 注释内容(mysql特有) *多行注释：/*注释*/
+
+#### 4.SQL分类
+
+##### 1）DDL（Data Definition Language）数据定义语言用来定数据库对象：数据库，表，列等。关键字：create，drop，alter等
+
+操作数据库(CRUD)
+
+###### 1.C(Create):创建
+
+创建数据库：
+
+```sql
+CREATE DATABASE 数据库名称；
+```
+
+创建数据库，判断不存再创建：
+
+```SQL
+CREATE DATABASE IF NOT EXISTS 数据库名称；
+```
+
+创建数据库，判断是否存在，并指定字符集：
+
+```SQL
+CREATE DATABASE 数据库名称 CHARACTER SET 字符集名；
+```
+
+```sql
+CREATE DATABASE IF NOT EXISTS db4 set CHARACTER SET UTF-8;
+```
+
+###### 2.R(Retrieve)：查询
+
+查询所有数据库的名称：
+
+```SQL
+SHOW DATABASES;
+```
+
+查询某个数据库的字符集和创建语句：
+
+```SQL
+SHOW CREATE DATABASE 数据库名称；
+```
+
+###### 3.U(Update)：修改
+
+修改数据库的字符集：
+
+```sql
+ALTER DATABASE 数据库名称 CHARACTER SET 字符集名称；
+```
+
+###### 4.D(Delete)：删除 
+
+修改数据库的字符集：
+
+```SQL
+DROP DATABASE 数据库名称；
+```
+
+判断数据库存在，存在则删除：
+
+```SQL
+DROP DATABASE IF EXISTS 数据库名称;
+```
+
+对表(CRUD)
+
+###### 1.C(Create):创建
+
+```sql
+CREATE TABLE 表名(
+    列名1 数据类型1，
+    列名2 数据类型2，
+    列名3 数据类型3，
+    列名4 数据类型4
+);
+```
+
+1.int：整数类型
+*age int，
+
+2.double：小数类型
+*score double（5，2）
+
+3.date：日期，只包含年月日，yyyy-MM-dd
+
+4.datetime：日期，包含年月日时分秒 yyyy-MM-dd HH:mm:ss
+
+5.timestamp：时间错类型包含年月日时分秒 yyyy-MM-dd HH:mm:SS
+*如果捋来不给这个字段赋值，或赋值为nul1，则默认使用当前的系统时间，来自动赋值
+
+6.varchar：字符串
+*name varchar（20）：姓名最大20个字符
+*zhangsan 8个字符张三2个字符
+
+```sql
+CREATE TABLE student(
+    id int,
+    name varchar(32),
+    age int,
+    score double(4,1),
+    birthday date,
+    insert_time timestamp
+);
+```
+
+复制表
+
+```sql
+CREATE TABLE 表名 LIKE 被复制的表名 
+```
+
+###### 2.R(Retrieve)：查询
+
+查询某个数据库中的所有表名称
+
+```sql
+SHOW TABLES;
+```
+
+查询表结构
+
+```SQL
+DESC 表名
+```
+
+###### 3.U(Update)：修改
+
+1.修改表名
+
+```sql
+ALTER TABLE 表名 RENAME TO 新的表名；
+```
+
+2.修改表的字符集
+
+```SQL
+ALTER TABLE 表名 CHARACTER SET 字符集名称；
+```
+
+3.添加一列
+
+```SQL
+ALTER TABLE 表名 ADD 列名数据类型；
+```
+
+4.修改列名称类型
+
+```
+ALTER TABLE 表名 CHANGE 列名新列别新数据类型；
+ALTER TABLE 表名 MODIFY 列名新数据类型；
+```
+
+5.删除列
+
+```
+ALTER TABLE 表名 DROP 列名；
+```
+
+###### 4.D(Delete)：删除 
+
+```SQL
+DROP TABLE 表名;
+DROP TABLE IF EXISTS 表名;
+```
+
+###### 
+
+##### 2）DML（Data Manipulation Language）数据操作语言用来对数据库中表的数据进行增删改。关键字：insert，delete，update等
+
+###### 1.添加数据
+
+```SQL
+INSERT INTO 表名(列名1,列名2.....列名n) VALUES(值1,值2...值n)
+```
+
+1.列名和值要一一对应。
+2.如果表名后，不定义列名，则默认给所有列添加值insert into 表名 values（值1，值2，...值n）；
+3.除了==数字类型==，其他类型需要使用==引号==（单双都可以）引起来
+
+###### 2.删除数据
+
+```SQL
+DELETE FROM 表 WHERE 条件;
+```
+
+1.如果不加条件，则删除表中所有记录。
+2.如果要删除所有记录
+1.delete from表名；--不推荐使用。有多少条记录就会执行多少次删除操作
+2.TRUNCATE TABLE 表名；--推荐使用，效率更高先删除表，然后再创建一张一样的表。
+
+###### 3.修改数据
+
+```SQL
+UPDATE 表名 SET 列名1=值1，列名2=值2，列名3=值3 WHERE 条件;
+```
+
+如果不添加任何条件则会修改所有的数据
+
+##### 3）DQL（Data Query Language）数据查询语言用来查询数据库中表的记录（数据）。关键字：select，where等
+
+###### 	1.查询语法
+
+```sql
+select
+字段列表
+from
+表名列表
+where
+I条件列表
+group by
+分组字段
+having
+分组之后的条件
+order by
+排序
+limit
+分页限定
+```
+
+###### 2.基础查询
+
+1.多个字段的询
+select 字段名1，字段名2...from表名；
+*注意：
+*如果查询所有字段，则可以使用*来替代字段列表。
+2.去除重复：
+*distinct
+3.计算列
+*一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）
+*ifnull（表达式1，表达式2）：nu11参与的运算，计算结果都为nul1
+*表达式1：哪个字段需要判断是否为nul1
+*如果该字段为nu11后的替换值。
+4.起别名：
+*as:as也可以省略
+
+###### 3.条件查询
+
+1.where子句后跟条件
+
+2.运算符
+*>、<、<=、>=、=、<>
+
+*BETWEEN...AND
+
+*IN（集合）
+
+like：*占位符：_单个任意字符 ; %：多个任意字符
+
+*IS NULL
+
+*and 或&&
+
+*or或||*
+
+*not或！
+
+##### 4）DCL（Data control Language）数据控制语言（了解）用来定义数据库的访问权限和安全级别，及创建用户。关键字：GRANT，REVOKE等
+
 ### JaveScript
 
 #### 1.概念
