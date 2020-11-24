@@ -375,7 +375,7 @@ Method getDeclaredMethod（string name，类<？>...parameterTypes）
 string getName（）
 ```
 
-### 数据库
+### 4.数据库
 
 #### 1.数据库基本概念
 
@@ -1223,7 +1223,7 @@ commit；
     
     
 
-### JDBC
+### 5.JDBC
 
 ##### 1.基本概念
 
@@ -1599,7 +1599,7 @@ DataSource ds = new DruidDataSourceFactory().createDataSource(pro);
     }
 ```
 
-###### JDBCTemplate
+###### 6.JDBCTemplate
 
 Spring框对JDBC的简单到装。提供了一个JDBCTemplate对家简化JDBC的升友
 
@@ -1630,6 +1630,23 @@ JdbcTemplate template=new JdbcTemplate（JDBCUtils.getDataSource（））；
 String sql="update account set balance=5000 where id=？"；int count=template.update（sql，.…args：3）；System.out.print1n（count）；
 ```
 
+```java
+update（）
+//执行DML语句。增、删、改语句
+queryForMap（）：
+//查询结果捋结果集封装为map集合，将列名作为key，将值作为value 将这条记录封装为一个map集合
+//注意：这个方法查询的结果集长度只能是1
+queryForList（）：
+//查询结果捋结果集封装为list集合
+//注意：将每一条记录封装为一个Map集合，再将Map集合装载到List集合中
+query（）：
+//查询结果，捋结果封装为JavaBean对象
+query的参数：RowMapper
+//一般我们使用BeanPropertyRowMapper实现类。可以完成数据到JavaBean的自动封装
+new BeanPropertyRowMapper<类型>（类型.class）
+queryForobject：查询结果，捋结果封装为对象
+//一般用于聚合函数的查询
+```
 
 
 
@@ -1650,7 +1667,8 @@ String sql="update account set balance=5000 where id=？"；int count=template.u
 
 
 
-### JaveScript
+
+### 6.JaveScript
 
 #### 1.概念
 
@@ -1833,7 +1851,7 @@ var reg =/正则表达式/
 reg.test(xxxxx)
 ```
 
-#### DOM
+#### 5.DOM
 
 功能：控制html文档的内容
 
@@ -1988,7 +2006,7 @@ replacechild（）：用新节点替换一个子节点。
 
 ###### 3.HTML DOM-针对HTML文档的标准模型
 
-#### BOM
+#### 6.BOM
 
 ##### 1.概念：Browser Object Model浏览器对象模型
 
@@ -2132,7 +2150,7 @@ var hred =location.href;
 location.href="www.baidu.com"
 ```
 
-#### 4.HTMLDOM
+#### 7.HTMLDOM
 
 innerHTML
 
@@ -2218,7 +2236,7 @@ div2.className="d2";
 1.onsubmit 确认按钮被点击。
 .onreset 重置按钮被点击。
 
-### Bootstrap框架
+### 7.Bootstrap框架
 
 #### 1.概念
 
@@ -2301,4 +2319,236 @@ table-hover
 表单:class="form-sontrol"
 ```
 
- 
+###  8.XML
+
+#### 1.概念
+
+Extensible Markup Language 可扩展标记语言
+
+##### 1.可扩展
+
+标签都是自定义的。
+
+##### 2.功能
+
+###### 1.存储数据
+
+1.配置文件
+2.在网络中传输
+
+##### 3.xml与htm1的区别
+
+1.xml标签都是自定义的，html标签是预定义。
+2.xml的语法严格，html语法松散
+3.xml是存储数据的，html是展示数据
+
+##### 4.W3C
+
+##### 万维网联盟
+
+#### 2.语法
+
+```xml
+<? xml version='1.01' ?>
+<users>  //根标签
+	<user id='1'> 
+		<name>zhangsan</name>
+		<age>23</age>
+		<gender>male</gender>
+	</user>
+	<user id='2'>
+		<name>lisi</name>
+		<age>24</age>
+		<gender>female</gender>
+	</user>
+</users>
+```
+
+##### 1.基本语法
+
+1.xml文档的后缀名  .xml
+
+2.xml的第一行必须定义为文档声明
+
+3.xml文档中有且仅有一个根标签
+
+4.属性值必须使用引号引起来
+
+5.标签必须正确关闭
+
+6.xml标签名称区分大小写
+
+##### 2.组成部分
+
+###### 1.文档声明
+
+1.格式：
+
+<？xml属性列表？>
+
+2.属性列表：
+
+version：版本号，r必须的属性
+
+encoding：编码方式。告知解析引擎当前文档使用的字符集，默认值：IS0-8859-1
+
+standalone：是否独立
+
+取值：
+
+yes：不依赖其他文件
+no：依赖其他文件
+
+###### 2.指合（了解）
+
+结合css的
+
+*<？xml-stylesheet type="text/css"href="a.css"？>
+
+###### 3.标签
+
+标签名称自定义的
+
+规则：
+
+名称可以包含字母、数字以及其他的字符
+名称不能以数字或者标点符号开始
+名称不能以字母xml（或者XML、Xml等等）开始
+名称不能包含空格
+
+###### 4.属性
+
+id属性值唯一
+
+###### 5.文本
+
+CDATA区：在该区域中的数据会被原样展示
+
+格式：<![CDATA[数据]]>
+
+##### 3.约束
+
+###### 1.基本概念
+
+规定XML文档的书写规则
+
+###### 2.作为框架的使用者（程序员）：
+
+1.能够在xm1中中引人约束文档
+2.能够简单的读懂约束文档
+
+##### 4.两种不同的约束 
+
+###### 1.DTD
+
+1.概念
+
+一种简单的约束技术
+
+2.分类
+
+*内部dtd：捋约束规则定义在xm1文档中
+*外部dtd：捋约束的规则定义在外部的dtd文件中
+
+3.用法
+
+```xml
+*引人dtd文档到xm1文档中
+*本地：<！DOCTYPE根标签名 SYSTEM"dtd文件的位置"）
+*网络：<！DOCTYPE 根标签名 PUBLIC "dtd文件名字" "dtd文件的位置URL">
+```
+
+4.缺点
+
+无法对内容进行限定
+
+###### 2.Schema
+
+1.概念
+
+一种复杂的约束技术
+
+2.用法
+
+1.填写xm1文档的根元素
+2.引入xsi前缀.xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+3.引入xsd文件命名空间.xsi:schemalocation="http://www.itcast.cn/xml student.xsd"
+4.为每一个xsd约束声明一个前缀，作为标识xmlns="http://www.itcast.cn/xml"
+
+```xml
+<students xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://www.itcast.cn/xml"
+xsi:schemalocation="http://www.itcast.cn/xml student.xsd">
+```
+
+##### 5.解析xml的方式：
+
+###### 1.DoM
+
+捋标记语言文档一次性加载进内存，在内存中形成一颗dom树
+
+*优点：操作方便，可以对文档进行CRUD的所有操作
+*缺点：占内存
+
+###### 2.SAx
+
+逐行读取，基于事件驱动的。
+
+*优点：不占内存。
+*缺点：只能读取，不能增删改
+
+##### 6.常见的解析器：
+
+1.JAxP:sun公司提供的解析器，支持dom和sax两种思想
+
+2.DOM4]：一款非常优秀的解析器
+
+3.Jsoup:jsoup是一款Java的HTML解析器，可接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSs以及类似于jQuery的操作方法来取出和操作数据。
+
+4.PULL:Android操作系统内置的解析器，sax方式的。
+
+jsoup:jsoup是一款Java的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套井常省力的API，可通过DoM，Css以及类似于jQuery的操作方法来取出和操作数据。
+
+```java
+public static void main（String[]args）throws IOException{
+//2.获取Document对象，根据xm1文档获取
+//2.1获取student.xml的path 
+    String path=JsoupDemol.class.getClassLoader（）.getResource（name:"student.xm1"）.getPath（）；
+//2.2解析xm1文档，加载文档进内存，获取dom树--->Document 
+    Document document=Jsoup.parse（new File（path），charsetName:"utf-8"）；
+//3.获取元素对象Element 
+    Elements elements=document.getElementsByTag（tagName:"name"）；System.out.println（elements.size（））；
+//3.1获取第一个name的Element对象
+	Element element=elements.get（0）；
+//3.2获取数据
+	String name=element.text（）；
+     System.out.print1n（name）；
+```
+
+##### 7.对象的使用
+
+1.Jsoup：工具类，可以解析html或xm1文档，返回Document h*parse：解析html或xm1文档，返回Document
+
+```java
+parse（File in，string charsetName）：解析xml或html文件的。
+parse（String html）：解析xml或html字符串
+parse（URL url，int timeoutMillis）：通过网络路径获取指定的html或xml的文档对象
+```
+
+2.Document：文档对象。代表内存中的dom树
+
+```java
+//获取Element对象
+getE1ementById（String id）：根据id属性值获取唯一的element对象*getElementsByTag（String tagName）：根据标签名称获取元素
+//对象集合
+getElementsByAttribute（string key）：根据属性名称获取元素对象集合
+getElementsByAttributeValue（String key，String value）：根据对应的属性名和属性值获取元素对象集合
+```
+
+3.Elements：元素Element对象的集合。可以当做ArrayList<Element>来使用
+
+4.Element：元素对象
+
+1.
+
+5.Node：节点对象
