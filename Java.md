@@ -2527,7 +2527,9 @@ public static void main（String[]args）throws IOException{
 
 ##### 7.对象的使用
 
-1.Jsoup：工具类，可以解析html或xm1文档，返回Document h*parse：解析html或xm1文档，返回Document
+###### 1.Jsoup
+
+工具类，可以解析html或xm1文档，返回Document h*parse：解析html或xm1文档，返回Document
 
 ```java
 parse（File in，string charsetName）：解析xml或html文件的。
@@ -2535,7 +2537,9 @@ parse（String html）：解析xml或html字符串
 parse（URL url，int timeoutMillis）：通过网络路径获取指定的html或xml的文档对象
 ```
 
-2.Document：文档对象。代表内存中的dom树
+###### 2.Document
+
+文档对象。代表内存中的dom树
 
 ```java
 //获取Element对象
@@ -2545,10 +2549,75 @@ getElementsByAttribute（string key）：根据属性名称获取元素对象集
 getElementsByAttributeValue（String key，String value）：根据对应的属性名和属性值获取元素对象集合
 ```
 
-3.Elements：元素Element对象的集合。可以当做ArrayList<Element>来使用
+###### 3.Elements
+
+元素Element对象的集合。可以当做ArrayList<Element>来使用
 
 4.Element：元素对象
 
-1.
+1.获取子元素对象
+getElementById（string id）：根据id属性值获取唯一的element对象*getElementsByTag（string tagName）：根据标签名称获取元素对象集合
+getElementsByAttribute（string key）：根据属性名称获取元素对象集合
+getElementsByAttributevalue（String key，string value）：根据对应的属性名和属性值获取元素对象集合
 
-5.Node：节点对象
+2.获取属性值
+string attr（string key）：根据属性名称获取属性值
+
+3.获取文本内容
+string text（）：获取文本内容
+string html（）：获取标签体的所有内容（包括字标签的字符串内容）
+
+###### 4.Node
+
+节点对象
+是Document和Element的父类
+
+###### 5.XPATH
+
+XPath即为XML路径语言，它是一种用来确定XML（标准通用标记语言的子集）文档中某部分位置的语言
+
+使用Jsoup的Xpath需要额外导入jar包
+
+查询w3cshool参考手册，使用xpath的语法完成查询
+
+```java
+代码：
+				//1.获取student.xml的path
+		        String path = JsoupDemo6.class.getClassLoader().getResource("student.xml").getPath();
+		        //2.获取Document对象
+		        Document document = Jsoup.parse(new File(path), "utf-8");
+		
+		        //3.根据document对象，创建JXDocument对象
+		        JXDocument jxDocument = new JXDocument(document);
+		
+		        //4.结合xpath语法查询
+		        //4.1查询所有student标签
+		        List<JXNode> jxNodes = jxDocument.selN("//student");
+		        for (JXNode jxNode : jxNodes) {
+		            System.out.println(jxNode);
+		        }
+		
+		        System.out.println("--------------------");
+		
+		        //4.2查询所有student标签下的name标签
+		        List<JXNode> jxNodes2 = jxDocument.selN("//student/name");
+		        for (JXNode jxNode : jxNodes2) {
+		            System.out.println(jxNode);
+		        }
+		
+		        System.out.println("--------------------");
+		
+		        //4.3查询student标签下带有id属性的name标签
+		        List<JXNode> jxNodes3 = jxDocument.selN("//student/name[@id]");
+		        for (JXNode jxNode : jxNodes3) {
+		            System.out.println(jxNode);
+		        }
+		        System.out.println("--------------------");
+		        //4.4查询student标签下带有id属性的name标签 并且id属性值为itcast
+		
+		        List<JXNode> jxNodes4 = jxDocument.selN("//student/name[@id='itcast']");
+		        for (JXNode jxNode : jxNodes4) {
+		            System.out.println(jxNode);
+		        }
+```
+
