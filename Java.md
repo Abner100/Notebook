@@ -1644,29 +1644,9 @@ query（）：
 query的参数：RowMapper
 //一般我们使用BeanPropertyRowMapper实现类。可以完成数据到JavaBean的自动封装
 new BeanPropertyRowMapper<类型>（类型.class）
-queryForobject：查询结果，捋结果封装为对象
+queryForobject：查询结果，将结果封装为对象
 //一般用于聚合函数的查询
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### 6.JaveScript
 
