@@ -1334,7 +1334,7 @@ static void reisterDriver(Driver driver)
 			3. account表 删除一条记录
 		
 			代码：
-			
+		
 		   ```java
 		   Statement stmt = null;
 		        Connection conn = null;
@@ -1380,8 +1380,8 @@ static void reisterDriver(Driver driver)
 		            }
 		        }
 			 }
-			```
-			
+		   ```
+		
 
 4.Resultset 
 
@@ -4167,7 +4167,7 @@ alert(div1.html());
 			1. slideDown([speed],[easing],[fn])
 			2. slideUp([speed,[easing],[fn]])
 			3. slideToggle([speed],[easing],[fn])
-
+	
 		3. 淡入淡出显示和隐藏方式
 			1. fadeIn([speed],[easing],[fn])
 			2. fadeOut([speed],[easing],[fn])
@@ -4924,5 +4924,126 @@ Jedis jedis = jedisPool.getResource();
 jedis.set("hehe","heihei");
 //4. 关闭 归还到连接池中
 jedis.close();		
+```
+
+### .Linux
+
+1.Liunx的常用命令
+
+1.切换目录命令
+
+```
+cd ：进入某一个文件夹  
+例子 cd /user
+```
+
+2.列出文件列表
+
+```
+ls ：目录下的所有文件和文件夹
+ls -a ： 目录下的所有文件，包括隐藏文件
+ls - ll（ll） ：目录下的所有文件的详细信息
+```
+
+3.创建目录和移除目录
+
+```
+mkdir ：创建文件
+rmdir：删除文件(空文件)
+mkdir -p ：创建多级目录  例子：mkdir -p aaa/bbb
+```
+
+4.浏览文件
+
+```
+cat：查看文件的所有内容（一起显示）
+more：查看文件的所有内容（分屏显示）回车显示下一行，空格显示下一屏 q为退出键
+tail：动态查看文件 例子：tail -f 文件名
+```
+
+5.文件操作
+
+```
+cp ：复制 例子：cp 源文件  目标文件
+mv：剪切 例子：mv 源文件 目标地址
+rm: 删除文件 例子：rm a.txt   只能删除文件
+rm -r：删除文件夹 例子 rm - f bb
+rm -rf ：删除文件夹但不进行询问  少用 rm -rf /*删除所有文件
+tar：打包文件
+tar -c/-v/-f/-z/-t/-x :  创建一个新的tar文件/显示运行过程的信息/指定文件名/调用gzip压缩命令进行压缩/查看压缩文件的内容/解开tar文件
+例子：打包不压缩：tar -cvf  xxx.tar  ./*
+打包压缩：tar -zcvf xxx.tar.gz ./*
+解包： tar -xvf xxx.tar 
+解压缩包：tar -zxvf xxx.tar.gz  -C /user/aaa
+find :查找文件   find / -name "ins*" 查找文件名称是以ins开头的文件 *为通配符
+find / -name "ins *" -ls
+find / -user aa -ls 查找用户aa 的文件
+find / -user aa -type d -ls 查找用户aa的目录
+find / -perm -777 -type d-ls 查找权限是777的文件
+grep ：在文件中查找对应的字符串
+例子： grep Address /root/aa/logs/today.log --color 高亮显示文件中的字符串Address
+-A1 显示后一行 A为after的意思
+-B1 显示前一行 B为before的意思
+```
+
+6.其他常用命令
+
+```
+pwd 显示当前所在的目录
+touch 创建一个空目录
+clear/ctrl+l 清屏
+```
+
+2.Vi与Vim
+
+1.基本操作
+
+```
+创建 vim xxx.txt
+退出插入模式：esc  
+底行模式 ：冒号 
+保存退出 ：wq  
+不保存退出 ：q！
+插入模式 ：i 当前位置插入  
+o: 在当前行之前再插入一行
+```
+
+2.重定向输出>和>>
+
+```
+cat xx1.txt > xx2.txt : 把xx1.txt的数据覆盖到xx2.txt中
+cat xx1.txt >> xx2.txt : 把xx1.txt的数据追加到xx2.txt中
+也可以 ifconfig>>xx.txt 把ifconfig中输出的数据追加到xx.txt中
+```
+
+3.系统管理命令
+
+```
+ps 正在运行的某个进程的状态
+ps –ef  查看所有进程
+ps –ef | grep ssh 查找某一进程
+kill 2868  杀掉2868编号的进程
+kill -9 2868  强制杀死进程
+```
+
+4.管道
+
+```
+管道是Linux命令中重要的一个概念，其作用是将一个命令的输出用作另一个命令的输入。示例
+ls --help | more  分页查询帮助信息
+ps –ef | grep java  查询名称中包含java的进程
+ifconfig | more
+cat index.html | more
+ps –ef | grep aio
+```
+
+5.网络
+
+```
+hostname :修改主机名  例子 ： hostname cyc  但是这样修改不是持久化的，是短暂的关机就没了
+如果想要永久的修改hostname的地址：
+在    /etc/sysconfig/network中修改
+修改静态IP地址：
+vim   /etc/sysconfig/netword-scripts/ifcfg-eth0
 ```
 
